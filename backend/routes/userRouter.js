@@ -42,7 +42,7 @@ router.delete(
         const user = await User.findById(req.params.id);
         if (user) {
             if (user.email === 'admin@example.com') {
-                res.status(400).send({ message: 'Can Not Delete Admin User' });
+                res.status(400).send({ message: 'không thể xóa người quản trị!' });
                 return;
             }
             const deleteUser = await user.remove();
@@ -82,15 +82,15 @@ router.post('/signin',
         const user = await User.findOne({ email: req.body.email });
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
-            res.send({
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                isAdmin: user.isAdmin,
-                // isSeller: user.isSeller,
-                token: generateToken(user),
-            });
-            return;
+                res.send({
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    isAdmin: user.isAdmin,
+                    // isSeller: user.isSeller,
+                    token: generateToken(user),
+                });
+                return;
             }
         } else {
             res.status(401).send({ message: 'Email and password invalid' })

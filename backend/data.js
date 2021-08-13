@@ -166,8 +166,8 @@ const data = {
     ],
     users: [
         {
-            name: 'admin',
-            email: 'admin@gmail.com',
+            name: 'admin2',
+            email: 'admin2@gmail.com',
             password: bcrypt.hashSync('1', 8),
             isAdmin: true,
             isSeller: true,
