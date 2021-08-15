@@ -50,7 +50,7 @@ function ProductCreen(props) {
                 createReview(productId, { rating, comment, name: userInfo.name })
             );
         } else {
-            alert('Làm ơn hãy nhập nhận xét và đánh giá');
+            alert('Nhập nhận xét và đánh giá');
         }
     };
     return (

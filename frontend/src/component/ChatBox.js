@@ -13,7 +13,7 @@ export default function ChatBox(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [messageBody, setMessageBody] = useState('');
   const [messages, setMessages] = useState([
-    { name: 'Admin', body: 'Hello there, Please ask your question.' },
+    { name: 'Admin', body: 'Xin chào, chúng tôi có thể giúp gì cho bạn!' },
   ]);
 
   useEffect(() => {
