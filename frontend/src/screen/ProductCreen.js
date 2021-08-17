@@ -7,6 +7,11 @@ import { PRODUCT_REVIEW_CREATE_RESET } from '../constants/ProductConstants';
 import MessageBox from '../component/MessageBox';
 import LoadingBox from '../component/LoadingBox';
 
+function format1(n, currency) {
+    return  n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+    })+ currency ;
+  }
 
 function ProductCreen(props) {
     const [qty, setQty] = useState(1);
@@ -77,7 +82,7 @@ function ProductCreen(props) {
                                         {/* {product.rating} Stars ({product.numReview} Review) */}
                                     </li>
                                     <li>
-                                        Giá:{" "}<b>${product.price}</b>
+                                        Giá:&nbsp;{" "}<b>{format1(product.price,'VNĐ')}</b>
                                     </li>
                                     <li>
                                         <b> Mô tả sản phẩm: </b>
@@ -90,7 +95,7 @@ function ProductCreen(props) {
                             <div className="details-action">
                                 <ul>
                                     <li>
-                                        Giá: <b>${product.price}</b>
+                                        Giá:&nbsp; <b>{format1( product.price,'VNĐ')}</b>
                                     </li>
                                     <li>
                                         Trạng thái: {product.countInStock > 0 ? "Còn hàng" : "hết hàng"}

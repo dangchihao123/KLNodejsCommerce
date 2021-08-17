@@ -9,7 +9,11 @@ import { ORDER_DELIVER_RESET, ORDER_PAY_RESET } from '../constants/orderConstant
 import { PayPalButton } from 'react-paypal-button-v2';
 
 // const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
-
+function format1(n, currency) {
+    return  n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+    })+ currency ;
+  }
 
 const OrderScreen = (props) => {
     const orderId = props.match.params.id;
@@ -91,12 +95,12 @@ const OrderScreen = (props) => {
                                     <div className="card card-body">
                                         <h2>giao hàng</h2>
                                         <p>
-                                            <strong>Tên:</strong> {order.shippingAddress.fullName}<br/>
-                                            <strong>Địa chỉ:</strong> {order.shippingAddress.address},<br/>                                 
-                                            <strong>Số điện thoại:</strong> {order.shippingAddress.phoneNumber},<br/> 
-                                            <strong>Tỉnh/Thành Phố:</strong> {order.shippingAddress.city},<br/> 
-                                            <strong>Mã bưu điện:</strong> {order.shippingAddress.postalCode},<br/> 
-                                            <strong>Quốc gia:</strong> {order.shippingAddress.country}<br/> 
+                                            <strong>Tên:</strong>&nbsp; {order.shippingAddress.fullName}<br/>
+                                            <strong>Địa chỉ:</strong>&nbsp; {order.shippingAddress.address},<br/>                                 
+                                            <strong>Số điện thoại:</strong>&nbsp; {order.shippingAddress.phoneNumber},<br/> 
+                                            <strong>Tỉnh/Thành Phố:</strong>&nbsp; {order.shippingAddress.city},<br/> 
+                                            <strong>Mã bưu điện:</strong>&nbsp; {order.shippingAddress.postalCode},<br/> 
+                                            <strong>Quốc gia:</strong>&nbsp; {order.shippingAddress.country}<br/> 
                                            
                                         </p>
                                         {order.isDelivered ? (
@@ -137,7 +141,7 @@ const OrderScreen = (props) => {
                                                             </div>
                                                         </div>
                                                         <div className="cart-price">
-                                                            {item.qty} x ${item.price} = ${item.qty * item.price}
+                                                            {item.qty} x {format1( item.price,'VNĐ')} = {format1(item.qty * item.price,'VNĐ')}
                                                         </div>
                                                     </li>
                                                 )
@@ -155,29 +159,29 @@ const OrderScreen = (props) => {
                                     </li>
                                     <li>
                                         <div className="row">
-                                            <div>giá sản phẩm</div>
-                                            <div>${order.itemsPrice}</div>
+                                            <div>giá sản phẩm:</div>&nbsp;
+                                            <div>{format1(order.itemsPrice, 'VNĐ') }</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div className="row">
-                                            <div>Tiền ship</div>
-                                            <div>${order.shippingPrice.toFixed(2)}</div>
+                                            <div>Tiền ship:</div>&nbsp;
+                                            <div>{format1( order.shippingPrice,'VNĐ')}</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div className="row">
-                                            <div>Thuế</div>
-                                            <div>${order.taxPrice.toFixed(2)}</div>
+                                            <div>Thuế:</div>&nbsp;
+                                            <div>{format1(order.taxPrice,'VNĐ') }</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div className="row">
-                                            <div><strong>Tổng tiền cần trả</strong></div>
-                                            <div><strong>${order.totalPrice.toFixed(2)}</strong></div>
+                                            <div><strong>Tổng tiền cần trả:</strong></div>&nbsp;
+                                            <div><strong>{format1(order.totalPrice, 'VNĐ')}</strong></div>
                                         </div>
                                     </li>
-                                    {!order.isPaid && order.paymentMethod === "Payment" && (
+                                    {!order.isPaid && order.paymentMethod === 'PayPal' &&  (
                                         <li>
                                             {!sdkReady ? (
                                                 <LoadingBox></LoadingBox>

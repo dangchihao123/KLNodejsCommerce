@@ -8,6 +8,12 @@ import Rating from '../component/Rating';
 import Pagination from '../component/Pagination';
 import Banner from '../component/Banner/Banner';
 
+function format1(n, currency) {
+    return  n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+    })+ currency ;
+  }
+
 function HomeScreen(props) {
     // const dispatch = useDispatch();
     // const productList = useSelector(state=>state. productList);
@@ -62,6 +68,7 @@ function HomeScreen(props) {
     const currentProducts = filterProduct.slice(indexOfFirstProduct, indexOfLastProduct);
     // change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    
     return (
         <div>
             <div className="input-group">
@@ -80,11 +87,11 @@ function HomeScreen(props) {
                 </div>
                 <div className="filter-sort">
                     {" "}
-                    <select className='select-filter' value={sortType} onChange={(e) => setSortType(e.target.value)}>
+                    {/* <select className='select-filter' value={sortType} onChange={(e) => setSortType(e.target.value)}>
                         <option>---Tìm theo giá---</option>
                         <option value="lowest">Gía tăng dần</option>
                         <option value="highest">Gía giảm dần</option>
-                    </select>{" "}
+                    </select>{" "} */}
                 </div>
             </div>
             <div className="banner">
@@ -104,7 +111,7 @@ function HomeScreen(props) {
                                     <Link to={'/product/' + product._id}>{product.name}</Link>
                                 </div>
                                 <div className="product-brand">{product.brand}</div>
-                                <div className="product-price">${product.price}</div>
+                                <div className="product-price">{format1(product.price,'VNĐ' )} </div>
                                 <Rating
                                     rating={product.rating}
                                     numReviews={product.numReviews}

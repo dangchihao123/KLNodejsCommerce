@@ -71,7 +71,7 @@ export default function ChatBox(props) {
       ) : (
         <div className="card card-body">
           <div className="row">
-            <strong>Support </strong>
+            <strong>Hổ trợ </strong>
             <button type="button" onClick={closeHandler}>
               <i className="fa fa-close" />
             </button>
@@ -89,9 +89,9 @@ export default function ChatBox(props) {
                 value={messageBody}
                 onChange={(e) => setMessageBody(e.target.value)}
                 type="text"
-                placeholder="type message"
+                placeholder="viết tin nhắn của bạn"
               />
-              <button type="submit">Send</button>
+              <button type="submit" className="btn btn-primary" style={{marginLeft:5}}>Gửi</button>
             </form>
           </div>
         </div>

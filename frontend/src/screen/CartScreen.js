@@ -3,7 +3,11 @@ import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
+function format1(n, currency) {
+    return  n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+    })+ currency ;
+  }
 function CartScreen(props) {
     const cart = useSelector(state => state.cart);
     const { cartItems } = cart;
@@ -65,7 +69,7 @@ function CartScreen(props) {
                                     </div>
                                 </div>
                                 <div className="cart-price">
-                                    $ {item.price}
+                                     {format1(item.price,'VNĐ')}
                                 </div>
                             </li>
                         )
@@ -76,7 +80,7 @@ function CartScreen(props) {
             <h3>
                 Tạm tính ({cartItems.reduce((a, c) => a + c.qty, 0)} sản phẩm)
                 :
-                $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                 {format1(cartItems.reduce((a, c) => a + c.price * c.qty, 0),'VNĐ') }
             </h3>
             <button onClick={checkoutHandler} className="button primary" disabled={cartItems.length === 0}>
                 Tiến hành đặt hàng
