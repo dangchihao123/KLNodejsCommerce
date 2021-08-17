@@ -7,6 +7,12 @@ import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 import LoadingBox from '../component/LoadingBox';
 import MessageBox from '../component/MessageBox';
 
+function format1(n, currency) {
+    return  n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+    })+ currency ;
+  }
+
 const PlaceOrderScreen = (props) => {
     const cart = useSelector((state) => state.cart);
     if (!cart.paymentMethod) {
@@ -39,12 +45,12 @@ const PlaceOrderScreen = (props) => {
                             <div className="card card-body">
                                 <h2>giao hàng</h2>
                                 <p>
-                                    <strong>Tên:</strong> {cart.shippingAddress.fullName}<br />
-                                    <strong>Địa chỉ:</strong>{" "}{cart.shippingAddress.address}<br />
-                                    <strong>Số điện thoại:</strong>{" "}{cart.shippingAddress.phoneNumber}<br />
-                                    <strong>Tỉnh/Thành phố:</strong>{cart.shippingAddress.city}<br />
-                                    <strong>Mã bưu điện:</strong>{cart.shippingAddress.postalCode}<br />
-                                    <strong>Quốc gia:</strong>{cart.shippingAddress.country}<br />
+                                    <strong>Tên:</strong>&nbsp; {cart.shippingAddress.fullName}<br />
+                                    <strong>Địa chỉ:</strong>&nbsp;{cart.shippingAddress.address}<br />
+                                    <strong>Số điện thoại:</strong>&nbsp;{cart.shippingAddress.phoneNumber}<br />
+                                    <strong>Tỉnh/Thành phố:</strong>&nbsp;{cart.shippingAddress.city}<br />
+                                    <strong>Mã bưu điện:</strong>&nbsp;{cart.shippingAddress.postalCode}<br />
+                                    <strong>Quốc gia:</strong>&nbsp;{cart.shippingAddress.country}<br />
                                 </p>
                             </div>
                         </li>
@@ -72,7 +78,7 @@ const PlaceOrderScreen = (props) => {
                                                     </div>
                                                 </div>
                                                 <div className="cart-price">
-                                                    {item.qty} x ${item.price} = ${item.qty * item.price}
+                                                    {item.qty} x {format1(item.price,'VNĐ')} = {format1(item.qty * item.price, 'VNĐ')}
                                                 </div>
                                             </li>
                                         )
@@ -90,26 +96,26 @@ const PlaceOrderScreen = (props) => {
                             </li>
                             <li>
                                 <div className="row">
-                                    <div>giá sản phẩm</div>
-                                    <div>${cart.itemsPrice.toFixed(2)}</div>
+                                    <div>giá sản phẩm:</div>&nbsp;
+                                    <div> {format1(cart.itemsPrice,'VNĐ')}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="row">
-                                    <div>Tiền ship</div>
-                                    <div>${cart.shippingPrice.toFixed(2)}</div>
+                                    <div>Tiền ship:</div>&nbsp;
+                                    <div>{format1(cart.shippingPrice,'VNĐ')}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="row">
-                                    <div>Thuế</div>
-                                    <div>${cart.taxPrice.toFixed(2)}</div>
+                                    <div>Thuế:</div>&nbsp;
+                                    <div>{format1(cart.taxPrice,'VNĐ')}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="row">
-                                    <div><strong>Tổng tiền cần trả</strong></div>
-                                    <div><strong>${cart.totalPrice.toFixed(2)}</strong></div>
+                                    <div><strong>Tổng tiền cần trả:</strong></div>&nbsp;
+                                    <div><strong>{format1(cart.totalPrice,'VNĐ')}</strong></div>
                                 </div>
                             </li>
                             <li>

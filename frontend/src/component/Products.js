@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 
+function format1(n, currency) {
+    return  n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+    })+ currency ;
+  }
+
 function Products(props) {
     const { product } = props;
     return (
@@ -31,7 +37,7 @@ function Products(props) {
                                     <Link to={'/product/' + product._id}>{product.name}</Link>
                                 </div>
                                 <div className="product-brand">{product.brand}</div>
-                                <div className="product-price">${product.price}</div>
+                                <div className="product-price">{format1( product.price,'VNĐ')} </div>
                                 <Rating
                                     rating={product.rating}
                                     numReviews={product.numReviews}

@@ -5,6 +5,12 @@ import LoadingBox from '../component/LoadingBox';
 import MessageBox from '../component/MessageBox';
 import { ORDER_DELETE_RESET } from '../constants/orderConstants';
 
+function format1(n, currency) {
+  return  n.toFixed(0).replace(/./g, function(c, i, a) {
+    return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+  })+ currency ;
+}
+
 export default function OrderListScreen(props) {
   const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const userSignin = useSelector((state) => state.userSignin);
@@ -40,10 +46,11 @@ export default function OrderListScreen(props) {
               <tr>
                 {/* <th>ID ĐƠN HÀNG</th> */}
                 <th>TÊN KHÁCH HÀNG</th>
+                <th>SỐ ĐIỆN THOẠI</th>
                 <th>HÌNH THỨC THANH TOÁN</th>
                 <th>SẢN PHẨM</th>
                 <th>NGÀY ĐẶT HÀNG</th>
-                <th>TỔNG ĐƠN HÀNG</th>
+                <th>TỔNG ĐƠN HÀNG (VNĐ)</th>
                 <th>NGÀY THANH TOÁN</th>
                 <th>NGÀY GIAO HÀNG</th>
                 <th>HÀNH ĐỘNG</th>
@@ -54,15 +61,16 @@ export default function OrderListScreen(props) {
                 <tr key={order._id}>
                   {/* <td>{order._id}</td> */}
                   <td>{order.user.name}</td>
+                  <td>{order.shippingAddress.phoneNumber}</td>
                   <td>{order.paymentMethod}</td>
                   <td>{order.orderItems.map(item =><ul><li>- {item.name}</li></ul>)}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice.toFixed(2)}</td>
-                  <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                  <td>{format1(order.totalPrice, '')}</td>
+                  <td>{order.isPaid ?'Đã thanh toán '+ order.paidAt.substring(0, 10) : 'Chưa thanh toán'}</td>
                   <td>
                     {order.isDelivered
-                      ? order.deliveredAt.substring(0, 10)
-                      : 'No'}
+                      ?'Đã giao hàng '+ order.deliveredAt.substring(0, 10)
+                      : 'Chưa giao hàng'}
                   </td>
                   <td>
                     <button

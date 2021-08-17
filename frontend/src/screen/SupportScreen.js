@@ -149,7 +149,7 @@ export default function SupportScreen() {
               <strong>Trò chuyện với {selectedUser.name} </strong>
             </div>
             <ul ref={uiMessagesRef}>
-              {messages.length === 0 && <li>No message.</li>}
+              {messages.length === 0 && <li>Không có tin nhắn !.</li>}
               {messages.map((msg, index) => (
                 <li key={index}>
                   <strong>{`${msg.name}: `}</strong> {msg.body}
