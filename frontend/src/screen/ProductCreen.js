@@ -46,7 +46,8 @@ function ProductCreen(props) {
         };
     }, [dispatch, productId, successReviewCreate]);
     const handleAddToCart = () => {
-        props.history.push("/cart/" + props.match.params.id + "?qty=" + qty)
+        // props.history.push("/cart/" + props.match.params.id + "?qty=" + qty)
+        props.history.push(`/cart/${productId}?qty=${qty}`);
     };
     const submitHandler = (e) => {
         e.preventDefault();
@@ -95,7 +96,7 @@ function ProductCreen(props) {
                             <div className="details-action">
                                 <ul>
                                     <li>
-                                        Giá:&nbsp; <b>{format1( product.price,'VNĐ')}</b>
+                                        Giá: <b>{format1( product.price,'VNĐ')}</b>
                                     </li>
                                     <li>
                                         Trạng thái: {product.countInStock > 0 ? "Còn hàng" : "hết hàng"}

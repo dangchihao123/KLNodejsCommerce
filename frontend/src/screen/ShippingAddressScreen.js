@@ -1,25 +1,23 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../component/CheckoutSteps';
 import { saveShippingAddress } from '../actions/cartActions';
-import axios from 'axios';
-import { useEffect } from 'react';
 
 
 const ShippingAddressScreen = (props) => {
     const userSignin = useSelector((state) => state.userSignin);
-    const { userInfo } = userSignin;
-    const cart = useSelector((state) => state.cart)
-    const { shippingAddress } = cart;
-    if (!userInfo) {
-        props.history.push('/signin');
-    }
-    const [fullName, setFullName] = useState(shippingAddress.fullName);
-    const [address, setAddress] = useState(shippingAddress.address);
-    const [phoneNumber, setPhoneNumber] = useState(shippingAddress.phoneNumber);
-    const [city, setCity] = useState(shippingAddress.city);
-    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-    const [country, setCountry] = useState(shippingAddress.country);
+    const { userInfo} = userSignin;
+    // const cart = useSelector((state) => state.cart)
+    // const { shippingAddress } = cart;
+    // if (!userInfo) {
+    //     props.history.push('/signin');
+    // }
+    const [fullName, setFullName] = useState('');
+    const [address, setAddress] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [city, setCity] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+    const [country, setCountry] = useState('');
     // const [tinh, setTinh] = useState(shippingAddress.tinh);
     const dispatch = useDispatch();
 
@@ -28,23 +26,10 @@ const ShippingAddressScreen = (props) => {
         dispatch(saveShippingAddress({ fullName, address, phoneNumber, city, postalCode, country }));
         props.history.push('/payment');
     }
-    // useEffect(() => {
-    //     const fecthData = async () => {
-    //         try {
-    //             const { data } = await axios.get('http://localhost:3001/api/tinh');
-    //             setTinh(data);
-    //         } catch (error) {
-    //             console.log('not found', error);
-    //         }
-    //     }
-    //     fecthData();
-    //     return () => {
-    //         //
-    //     }
-    // }, [tinh]);
     return (
         <div>
-            <CheckoutSteps step1 step2></CheckoutSteps>
+           
+                <CheckoutSteps step1 step2></CheckoutSteps>
             <form className="form" onSubmit={submitHandler}>
                 <ul className="form-container">
                     <li>
@@ -145,6 +130,8 @@ const ShippingAddressScreen = (props) => {
                     </li>
                 </ul>
             </form>
+            
+            
         </div>
     );
 }
