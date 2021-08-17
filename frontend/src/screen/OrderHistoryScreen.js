@@ -24,6 +24,8 @@ export default function OrderHistoryScreen(props) {
                     <thead>
                         <tr>
                             <th>ID ĐƠN HÀNG</th>
+                            <th>HÌNH THỨC THANH TOÁN</th>
+                            <th>SẢN PHẨM ĐÃ MUA</th>
                             <th>NGÀY ĐẶT HÀNG</th>
                             <th>TỔNG TIỀN</th>
                             <th>NGÀY THANH TOÁN</th>
@@ -35,13 +37,15 @@ export default function OrderHistoryScreen(props) {
                         {orders.map((order) => (
                             <tr key={order._id}>
                                 <td>{order._id}</td>
+                                <td>{order.paymentMethod}</td>
+                                <td>{order.orderItems.map(item =><ul><li>- {item.name}</li></ul>)}</td>
                                 <td>{order.createdAt.substring(0, 10)}</td>
                                 <td>{order.totalPrice.toFixed(2)}</td>
-                                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                                <td>{order.isPaid ? "Đã thanh toán "+ order.paidAt.substring(0, 10) : 'Chưa thanh toán'}</td>
                                 <td>
                                     {order.isDelivered
-                                        ? order.deliveredAt.substring(0, 10)
-                                        : 'No'}
+                                        ? "Đã giao hàng "+ order.deliveredAt.substring(0, 10)
+                                        : 'Chưa giao hàng'}
                                 </td>
                                 <td>
                                     <button

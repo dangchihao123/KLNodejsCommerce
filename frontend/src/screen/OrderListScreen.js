@@ -40,6 +40,8 @@ export default function OrderListScreen(props) {
               <tr>
                 {/* <th>ID ĐƠN HÀNG</th> */}
                 <th>TÊN KHÁCH HÀNG</th>
+                <th>HÌNH THỨC THANH TOÁN</th>
+                <th>SẢN PHẨM</th>
                 <th>NGÀY ĐẶT HÀNG</th>
                 <th>TỔNG ĐƠN HÀNG</th>
                 <th>NGÀY THANH TOÁN</th>
@@ -52,6 +54,8 @@ export default function OrderListScreen(props) {
                 <tr key={order._id}>
                   {/* <td>{order._id}</td> */}
                   <td>{order.user.name}</td>
+                  <td>{order.paymentMethod}</td>
+                  <td>{order.orderItems.map(item =><ul><li>- {item.name}</li></ul>)}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice.toFixed(2)}</td>
                   <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>

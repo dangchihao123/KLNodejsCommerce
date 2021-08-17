@@ -9,7 +9,8 @@ const PaymentMethodScreen = (props) => {
     if (!shippingAddress.address) {
         props.history.push('/shipping');
     }
-    const [paymentMethod, setPaymentMethod] = useState('PayPal');
+    const [paymentMethod, setPaymentMethod] = useState(['PayPal','thanhToanKhiNhanHang']);
+    // const [thanhtoankhinhanhang, setthanhtoankhinhanhang] = useState('');
     const dispatch = useDispatch();
     const submitHandler = (e) => {
         e.preventDefault();
@@ -42,7 +43,21 @@ const PaymentMethodScreen = (props) => {
                             </div>
                         </div>
                     </li>
-                    
+                    <li>
+                        <div>
+                            <div>
+                                <input
+                                    type="radio"
+                                    id="thanhtoankhinhanhang"
+                                    value="thanhtoankhinhanhang"
+                                    name="paymentMethod"
+                                    required
+                                    onChange={(e) => setPaymentMethod(e.target.value)}
+                                />{" "}
+                                <label htmlFor="paypal">Thanh toán khi nhận hàng</label>
+                            </div>
+                        </div>
+                    </li>
                     <li>
                         <div>
                             <button className="button primary" type="submit">tiếp tục</button>

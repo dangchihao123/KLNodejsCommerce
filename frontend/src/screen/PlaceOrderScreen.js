@@ -40,11 +40,11 @@ const PlaceOrderScreen = (props) => {
                                 <h2>giao hàng</h2>
                                 <p>
                                     <strong>Tên:</strong> {cart.shippingAddress.fullName}<br />
-                                    <strong>Địa chỉ:</strong>{" "}
-                                    {cart.shippingAddress.address},{" "}
-                                    {cart.shippingAddress.city},{" "}
-                                    {cart.shippingAddress.postalCode},{" "}
-                                    {cart.shippingAddress.country}{" "}
+                                    <strong>Địa chỉ:</strong>{" "}{cart.shippingAddress.address}<br />
+                                    <strong>Số điện thoại:</strong>{" "}{cart.shippingAddress.phoneNumber}<br />
+                                    <strong>Tỉnh/Thành phố:</strong>{cart.shippingAddress.city}<br />
+                                    <strong>Mã bưu điện:</strong>{cart.shippingAddress.postalCode}<br />
+                                    <strong>Quốc gia:</strong>{cart.shippingAddress.country}<br />
                                 </p>
                             </div>
                         </li>
