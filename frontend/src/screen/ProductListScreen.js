@@ -15,15 +15,17 @@ import {
 } from '../constants/ProductConstants';
 
 
+function format1(n, currency) {
+  return  n.toFixed(0).replace(/./g, function(c, i, a) {
+    return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+  })+ currency ;
+}
+
 export default function ProductListScreen(props) {
   const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
-// function format1(n, currency) {
-//   return  n.toFixed(0).replace(/./g, function(c, i, a) {
-//     return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
-//   })+ currency ;
-// }
+
   const productCreate = useSelector((state) => state.productCreate);
   const {
     loading: loadingCreate,
@@ -103,7 +105,7 @@ export default function ProductListScreen(props) {
               <tr key={product._id}>
                 {/* <td>{i++}</td> */}
                 <td>{product.name}</td>
-                <td>{product.price}</td>
+                <td>{format1(product.price,'')}</td>
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
                 <td>
