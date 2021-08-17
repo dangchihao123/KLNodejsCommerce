@@ -2,6 +2,7 @@ import React, { Component, useEffect } from 'react';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MessageBox from '../component/MessageBox';
 
 function format1(n, currency) {
     return  n.toFixed(0).replace(/./g, function(c, i, a) {
@@ -22,10 +23,11 @@ function CartScreen(props) {
         if (productId) {
             dispatch(addToCart(productId, qty));
         }
-    },[]);
+    },[dispatch, productId, qty]);
 
     const checkoutHandler = () => {
         props.history.push("/signin?redirect=shipping")
+        // props.history.push("/shipping");
     }
     return <div className="cart">
         <div className="cart-list">
@@ -39,10 +41,11 @@ function CartScreen(props) {
                     </div>
                 </li>
                 {
-                    cartItems.length === 0 ?
-                        <div>
+                    cartItems.length === 0 ? (
+                        <MessageBox>
                             giỏ hàng trống{" "} <Link to="/"><b>Tiếp tục mua sắm</b></Link>
-                        </div>
+                        </MessageBox>
+                        )
                         :
                         cartItems.map(item =>
                             <li key={item.product}>
