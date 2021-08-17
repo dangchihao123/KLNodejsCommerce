@@ -16,6 +16,7 @@ const ShippingAddressScreen = (props) => {
     }
     const [fullName, setFullName] = useState(shippingAddress.fullName);
     const [address, setAddress] = useState(shippingAddress.address);
+    const [phoneNumber, setPhoneNumber] = useState(shippingAddress.phoneNumber);
     const [city, setCity] = useState(shippingAddress.city);
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
     const [country, setCountry] = useState(shippingAddress.country);
@@ -24,7 +25,7 @@ const ShippingAddressScreen = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveShippingAddress({ fullName, address, city, postalCode, country }));
+        dispatch(saveShippingAddress({ fullName, address, phoneNumber, city, postalCode, country }));
         props.history.push('/payment');
     }
     // useEffect(() => {
@@ -56,20 +57,32 @@ const ShippingAddressScreen = (props) => {
                         <input
                             type="text"
                             id="fullName"
-                            placeholder="Enter full name"
+                            placeholder="Nhập họ và tên"
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
                             required
                         />
                     </li>
                     <li>
-                        <label htmlFor="address">địa chỉ và số điện thoại</label>
+                        <label htmlFor="address">địa chỉ</label>
                         <input
                             type="text"
                             id="address"
-                            placeholder="Enter address"
+                            placeholder="Nhập địa chỉ"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+
+                    </li>
+                    <li>
+                        <label htmlFor="address">số điện thoại</label>
+                        <input
+                            type="text"
+                            id="phoneNumber"
+                            placeholder="Nhập số điện thoại"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                             required
                         />
 
@@ -79,7 +92,7 @@ const ShippingAddressScreen = (props) => {
                         <input
                             type="text"
                             id="city"
-                            placeholder="Enter city"
+                            placeholder="Nhập Tỉnh hoặc thành phố"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             required
@@ -108,7 +121,7 @@ const ShippingAddressScreen = (props) => {
                         <input
                             type="text"
                             id="postalCode"
-                            placeholder="Enter postal Code"
+                            placeholder="Nhập mã bưu điện"
                             value={postalCode}
                             onChange={(e) => setPostalCode(e.target.value)}
                             required
@@ -119,7 +132,7 @@ const ShippingAddressScreen = (props) => {
                         <input
                             type="text"
                             id="country"
-                            placeholder="Enter country"
+                            placeholder="Nhập quốc gia"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                             required

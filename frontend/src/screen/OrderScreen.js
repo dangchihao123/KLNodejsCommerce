@@ -64,21 +64,21 @@ const OrderScreen = (props) => {
     const deliverHandler = () => {
         dispatch(deliverOrder(order._id));
     }
-    const createOrder = (data, actions) => {
-        return actions.order.create({
-            purchase_units: [
-                {
-                    amount: {
-                        value: "1000",
-                    },
-                },
-            ],
-        });
-    }
+    // const createOrder = (data, actions) => {
+    //     return actions.order.create({
+    //         purchase_units: [
+    //             {
+    //                 amount: {
+    //                     value: "1000",
+    //                 },
+    //             },
+    //         ],
+    //     });
+    // }
 
-    const onApprove = (data, actions) => {
-        return actions.order.capture();
-    }
+    // const onApprove = (data, actions) => {
+    //     return actions.order.capture();
+    // }
     return loading ? (<LoadingBox></LoadingBox>) :
         error ? (<MessageBox variant='danger'>{error}</MessageBox>)
             : (
@@ -91,12 +91,13 @@ const OrderScreen = (props) => {
                                     <div className="card card-body">
                                         <h2>giao hàng</h2>
                                         <p>
-                                            <strong>Tên:</strong> {order.shippingAddress.fullName}<br />
-                                            <strong>Địa chỉ:</strong>
-                                            {order.shippingAddress.address},
-                                            {order.shippingAddress.city},
-                                            {order.shippingAddress.postalCode},
-                                            {order.shippingAddress.country}
+                                            <strong>Tên:</strong> {order.shippingAddress.fullName}<br/>
+                                            <strong>Địa chỉ:</strong> {order.shippingAddress.address},<br/>                                 
+                                            <strong>Số điện thoại:</strong> {order.shippingAddress.phoneNumber},<br/> 
+                                            <strong>Tỉnh/Thành Phố:</strong> {order.shippingAddress.city},<br/> 
+                                            <strong>Mã bưu điện:</strong> {order.shippingAddress.postalCode},<br/> 
+                                            <strong>Quốc gia:</strong> {order.shippingAddress.country}<br/> 
+                                           
                                         </p>
                                         {order.isDelivered ? (
                                             <MessageBox variant='success'>
@@ -176,14 +177,13 @@ const OrderScreen = (props) => {
                                             <div><strong>${order.totalPrice.toFixed(2)}</strong></div>
                                         </div>
                                     </li>
-                                    {!order.isPaid && (
+                                    {!order.isPaid && order.paymentMethod === "Payment" && (
                                         <li>
                                             {!sdkReady ? (
                                                 <LoadingBox></LoadingBox>
                                             ) : (
                                                 <>
-                                                    {errorPay && (<MessageBox>{errorPay}</MessageBox>
-                                                    )}
+                                                    {errorPay && (<MessageBox>{errorPay}</MessageBox>)}
                                                     {loadingPay && <LoadingBox></LoadingBox>}
                                                     {/* <PayPalButton
                                                         amount={order.totalPrice}>
@@ -200,7 +200,8 @@ const OrderScreen = (props) => {
                                             }
                                         </li>
                                     )}
-                                    {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                                    
+                                    {userInfo.isAdmin && !order.isPaid && !order.isDelivered && (
                                         <li>
                                             {loadingDeliver && <LoadingBox></LoadingBox>}
                                             {errorDeliver && <MessageBox variant="danger">{errorDeliver}</MessageBox>}
