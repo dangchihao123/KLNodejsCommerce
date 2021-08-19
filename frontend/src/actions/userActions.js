@@ -79,7 +79,7 @@ const signin = (email, password) => async (dispatch) => {
             type: USER_SIGNIN_FAIL,
             payload: error.respones && error.response.data.message
                 ? error.response.data.message
-                : error.message
+                : "Email hoặc mật khẩu không đúng, vui lòng nhập lại!"
         })
     }
 }
@@ -102,8 +102,8 @@ const register = (name, email, password) => async (dispatch) => {
         dispatch({
             type: USER_REGISTER_FAIL,
             payload: error.respones && error.response.data.message
-                ? error.response.data.message
-                : error.message
+                ? "Mời bạn nhập thông tin cần đăng ký !"
+                : "Mời bạn điền thông tin cần đăng ký !"
         })
     }
 }
@@ -126,24 +126,24 @@ const detailsUser = (userId) => async (dispatch, getState) => {
         dispatch({ type: USER_DETAILS_FAIL, payload: message });
     }
 }
-const updateUserProfile = (user) => async (dispatch, getState) => {
+export const updateUserProfile = (user) => async (dispatch, getState) => {
     dispatch({ type: USER_UPDATE_PROFILE_REQUEST, payload: user });
     const {
-        userSignin: { userInfo },
+      userSignin: { userInfo },
     } = getState();
     try {
-        const { data } = await axios.put(`http://localhost:3001/api/users/profile`, user, {
-            headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
-        dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
-        dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
-        localStorage.setItem('userInfo', JSON.stringify(data));
+      const { data } = await axios.put(`http://localhost:3001/api/users/profile`, user, {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      });
+      dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
+      dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
     } catch (error) {
-        const message =
-            error.response && error.response.data.message
-                ? error.response.data.message
-                : error.message;
-        dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: message });
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: message });
     }
-}
-export { signin, register, signout, detailsUser, updateUserProfile, listUsers, deleteUser, updateUser }
+  };
+export { signin, register, signout, detailsUser, listUsers, deleteUser, updateUser }

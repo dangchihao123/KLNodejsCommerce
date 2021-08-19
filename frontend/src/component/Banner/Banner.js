@@ -7,7 +7,7 @@ export default function Banner() {
         //     <div className="col-md-6 px-0">
         //     </div>
         <>
-            <Link to="/"><img className="image-banner" src="https://mac24h.vn/images/companies/1/untitled%20folder%201/untitled%20folder/banner-watch-seri4.jpg?1537526795127" /></Link>
+            <Link to="/"><img className="image-banner" src="https://cdn.appleigeek.com/2021/06/maxresdefault-5.jpg" alt="hình banner" /></Link>
         </>
         // </div>
     )

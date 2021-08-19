@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const database = require('./config/database');
 const dotenv = require('dotenv');
+require('dotenv').config();
 const generateToken = (user) => {
     return jwt.sign({
         _id: user._id,
@@ -8,7 +9,7 @@ const generateToken = (user) => {
         email: user.email,
         isAdmin: user.isAdmin,
         isSeller: user.isSeller,
-    }, process.env.JWT_SECRET || 'somethingsecret', {
+    }, database.JWT_SECRET || 'somethingsecret', {
         expiresIn: '30d'
     })
 }

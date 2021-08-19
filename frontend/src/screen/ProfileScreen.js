@@ -36,7 +36,7 @@ const ProfileScreen = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
-            alert('password are not matched ');
+            alert('Mật khẩu không khớp, vui lòng nhập lại! ');
         } else {
             dispatch(updateUserProfile({ userId: user._id, name, email, password }))
         }
@@ -47,7 +47,7 @@ const ProfileScreen = () => {
                 <ul className="form-container">
                     <li>
                         <div>
-                            <h1>User Profile</h1>
+                            <h1>Thông tin khách hàng</h1>
                         </div>
                     </li>
                     {
@@ -56,17 +56,24 @@ const ProfileScreen = () => {
                             error ? <MessageBox variant='danger'>{error}</MessageBox>
                                 :
                                 <>
-                                    {loadingUpdate && <LoadingBox></LoadingBox>}
-                                    {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
-                                    {successUpdate && <MessageBox variant="success">Profile update successfully</MessageBox>}
+                                {loadingUpdate && <LoadingBox></LoadingBox>}
+                                {errorUpdate && (
+                                <MessageBox variant="danger">{errorUpdate}</MessageBox>
+                                )}
+                                {successUpdate && (
+                                <MessageBox variant="success">
+                                    Cập nhật thông tin thành công
+                                </MessageBox>
+                                )}
                                     <li>
-                                        <label htmlFor="name">UserName</label>
+                                        <label htmlFor="name">Họ và tên</label>
                                         <input
                                             id="name"
                                             type="text"
                                             placeholder="Enter name"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
+                                            required
                                         />
                                     </li>
 
@@ -78,29 +85,34 @@ const ProfileScreen = () => {
                                             placeholder="Enter email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
+                                            required
                                         />
                                     </li>
                                     <li>
-                                        <label htmlFor="password">Password</label>
+                                        <label htmlFor="password">Mật khẩu</label>
                                         <input
                                             id="password"
                                             type="password"
-                                            placeholder="Enter password"
+                                            placeholder="mật khẩu"
                                             onChange={(e) => setPassword(e.target.value)}
+                                            // disabled
+                                            required
                                         />
                                     </li>
                                     <li>
-                                        <label htmlFor="confirmPassword">confirm Password</label>
+                                        <label htmlFor="confirmPassword">Nhập lại mật khẩu</label>
                                         <input
                                             id="confirmPassword"
                                             type="password"
-                                            placeholder="Enter confirm password"
+                                            placeholder="nhập lại mật khẩu"
                                             onChange={(e) => setConfirmPassword(e.target.value)}
+                                            // disabled
+                                            required
                                         />
                                     </li>
                                     <li>
                                         <label />
-                                        <button className=" button primary" type="submit">Update</button>
+                                        <button className=" button primary" type="submit">Cập nhật</button>
                                     </li>
                                 </>
                     }

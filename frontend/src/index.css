@@ -71,7 +71,7 @@ body{
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  height: 86px;
+  height: 63px;
   position: fixed;
   right: 0;
   left: 0;
@@ -79,7 +79,7 @@ body{
 }
 #form1 {
   border-radius: 4px;
-  width: 28rem;
+  width: 40rem;
   border: 1px solid;
   height: 4rem;
 
@@ -117,7 +117,7 @@ form{
 }
 .footer-ul {
   margin-top: 0rem;
-  margin-bottom: 0rem;
+  margin-bottom: -4rem;
   display: -webkit-box;
 }
 .footer-ul li{
@@ -762,10 +762,11 @@ button.btn.btn-primary.mr-10 {
 }
 img.image-banner {
  min-width: 100%;
+ height: 555px;
 }
 /* content */
 .content {
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 /*  */
 /* .method-pay.text-right {
@@ -917,7 +918,7 @@ button.close-sidebar {
   border-radius: 50px !important;
   /* width: 175px !important; */
   left: 33px;
-  bottom: 58px;
+  bottom: 25px;
 }
 .hotline-bar > a {
   color: #fff;
