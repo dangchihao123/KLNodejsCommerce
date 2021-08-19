@@ -98,7 +98,7 @@ function HomeScreen(props) {
                            <Banner />
             </div>
              <div className="filter-result">
-                <p className="count-product"><b>SẢN PHẨM MỚI {products.length}</b></p>
+                <p className="count-product"><b>TẤT CẢ SẢN PHẨM  {products.length}</b></p>
                 <hr />
             </div>
             <ul className="products">

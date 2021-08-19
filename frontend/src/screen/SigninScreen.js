@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signin } from '../actions/userActions';
 import LoadingBox from '../component/LoadingBox';
+import MessageBox from '../component/MessageBox';
 // import MessageBox from '../component/MessageBox';
 // import { createBrowserHistory } from 'history';
 
@@ -43,7 +44,7 @@ function SigninScreen(props) {
                     </h1>
                 </li>
                 {loading && <LoadingBox></LoadingBox>}
-                {error && <div variant="danger"></div>}
+                {error && <MessageBox variant="danger">{error}</MessageBox>}
                 {/* <li>
                     {loading && <div>Loading...</div>}
                     {error && <div variant="danger">{error}</div>}
@@ -52,13 +53,13 @@ function SigninScreen(props) {
                     <label htmlfor="email">
                         Email
                     </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" id="email" required onChange={(e) => setEmail(e.target.value)} />
                 </li>
                 <li>
                     <label htmlfor="password">
                         Mật khẩu
                     </label>
-                    <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)} />
                 </li>
                 <li>
                     <button type="submit" className="button primary">Đăng nhập</button>

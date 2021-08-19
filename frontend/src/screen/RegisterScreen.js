@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { register } from '../actions/userActions';
+import LoadingBox from '../component/LoadingBox';
+import MessageBox from '../component/MessageBox';
 
 
 function RegisterScreen(props) {
@@ -41,32 +43,32 @@ function RegisterScreen(props) {
                     </h1>
                 </li>
                 <li>
-                    {loading && <div>Loading...</div>}
-                    {error && <div>{error}</div>}
+                    {loading && <LoadingBox>{loading}.</LoadingBox>}
+                    {error && <MessageBox>{error}</MessageBox>}
                 </li>
                 <li>
                     <label htmlfor="name">
                         Họ và tên
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)} />
+                    <input type="name" name="name" id="name" required onChange={(e) => setName(e.target.value)} />
                 </li>
                 <li>
                     <label htmlfor="email">
                         Email
                     </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" id="email" required onChange={(e) => setEmail(e.target.value)} />
                 </li>
                 <li>
                     <label htmlfor="password">
                         Mật khẩu
                     </label>
-                    <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)} />
                 </li>
                 <li>
                     <label htmlfor="rePassword">
                         nhập lại mật khẩu
                     </label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} />
+                    <input type="password" id="confirmPassword" name="confirmPassword" required onChange={(e) => setConfirmPassword(e.target.value)} />
                 </li>
                 <li>
                     <button type="submit" className="button primary">Đăng ký</button>
