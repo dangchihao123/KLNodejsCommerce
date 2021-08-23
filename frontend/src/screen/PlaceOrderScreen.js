@@ -23,7 +23,7 @@ const PlaceOrderScreen = (props) => {
     const toPrice = (num) => Number(num.toFixed(2));
     cart.itemsPrice = toPrice(cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0));
     cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
-    cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
+    cart.taxPrice = toPrice(0.1 * cart.itemsPrice);
     cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
     const dispatch = useDispatch();
     const placeOrderHandler = () => {

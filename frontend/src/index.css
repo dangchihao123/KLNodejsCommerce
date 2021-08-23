@@ -785,7 +785,7 @@ aside {
   z-index: 1000;
   transform: translateX(-30rem);
   transition: all 0.5s;
-  margin-top: 8rem;
+  margin-top: 6rem;
 }
 aside.open {
   transform: translateX(0);
@@ -910,7 +910,7 @@ button.close-sidebar {
   border-radius: 3px;
   padding: 0 10px;
   background-size: 100%;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: all 0.8s;
   -webkit-transition: all 0.8s;
   z-index: 9;
@@ -920,7 +920,7 @@ button.close-sidebar {
   left: 33px;
   bottom: 25px;
 }
-.hotline-bar > a {
+.hotline-bar > .hotline-bar-number {
   color: #fff;
   text-decoration: none;
   font-size: 15px;
@@ -931,10 +931,10 @@ button.close-sidebar {
   line-height: 40px;
   font-family: Arial;
 }
-.hotline-bar > a:hover,
+/* .hotline-bar > a:hover,
 .hotline-bar > a:active {
   color: #fff;
-}
+} */
 @-webkit-keyframes phonering-alo-circle-anim {
   0% {
     -webkit-transform: rotate(0) scale(0.5) skew(1deg);

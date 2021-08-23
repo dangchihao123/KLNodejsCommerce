@@ -98,9 +98,9 @@ function App() {
                     <li>
                       <Link to="#signout" onClick={signoutHandler}>Đăng xuất</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link to="/profile">Thông tin</Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               ) : (
@@ -247,15 +247,15 @@ function App() {
           <div className="hotline-phone-ring-circle" />
           <div className="hotline-phone-ring-circle-fill" />
           <div className="hotline-phone-ring-img-circle">
-            <a href="tel:0123456789" className="pps-btn-img">
+            <div href="tel:0123456789" className="pps-btn-img">
               <img src="https://nocodebuilding.com/wp-content/uploads/2020/07/icon-call-nh.png" alt="Gọi điện thoại" width={50} />
-            </a>
+            </div>
           </div>
         </div>
         <div className="hotline-bar">
-          <a href="tel:0843280235">
+          <div className="hotline-bar-number">
             <span className="text-hotline">0843 280 235</span>
-          </a>
+          </div>
         </div>
       </div>
         </footer>
