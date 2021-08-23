@@ -50,7 +50,7 @@ export default function OrderHistoryScreen(props) {
                                 <td>{order.isPaid ? "Đã thanh toán "+ order.paidAt.substring(0, 10) : 'Chưa thanh toán'}</td>
                                 <td>
                                     {order.isDelivered
-                                        ? "Đã giao hàng "+ order.deliveredAt.substring(0, 10)
+                                        ? "Đã xác nhận "+ order.deliveredAt.substring(0, 10)
                                         : 'Chưa giao hàng'}
                                 </td>
                                 <td>
