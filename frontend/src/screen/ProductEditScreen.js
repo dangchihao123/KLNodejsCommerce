@@ -108,7 +108,7 @@ export default function ProductEditScreen(props) {
                 <input
                   id="name"
                   type="text"
-                  placeholder="Nhập tên sản phẩm"
+                  placeholder="Nhập tên"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 ></input>
@@ -118,7 +118,7 @@ export default function ProductEditScreen(props) {
                 <input
                   id="price"
                   type="text"
-                  placeholder="Nhập giá sản phẩm"
+                  placeholder="Nhập giá"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 ></input>
@@ -136,7 +136,7 @@ export default function ProductEditScreen(props) {
               <li>
                 <label htmlFor="imageFile" required>File hình </label>
                 <input
-                  required
+                  // required
                   type="file"
                   id="imageFile"
                   label="Choose Image"
@@ -153,7 +153,7 @@ export default function ProductEditScreen(props) {
                   required
                   id="category"
                   type="text"
-                  placeholder="Nhập danh mục sản phẩm"
+                  placeholder="Nhập danh mục"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 ></input>
@@ -164,18 +164,18 @@ export default function ProductEditScreen(props) {
                   required
                   id="brand"
                   type="text"
-                  placeholder="Nhập nhẫn hiệu"
+                  placeholder="Nhập nhãn hiệu"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
                 ></input>
               </li>
               <li>
-                <label htmlFor="countInStock">Số lượng tồn</label>
+                <label htmlFor="countInStock">nhập số lượng</label>
                 <input
                   required
                   id="countInStock"
                   type="text"
-                  placeholder="Nhập số lượng kho"
+                  placeholder="Nhập số lượng"
                   value={countInStock}
                   onChange={(e) => setCountInStock(e.target.value)}
                 ></input>

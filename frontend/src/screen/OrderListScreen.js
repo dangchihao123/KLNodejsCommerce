@@ -51,8 +51,8 @@ export default function OrderListScreen(props) {
                 <th>SẢN PHẨM</th>
                 <th>NGÀY ĐẶT HÀNG</th>
                 <th>TỔNG ĐƠN HÀNG (VNĐ)</th>
-                <th>NGÀY THANH TOÁN</th>
-                <th>NGÀY GIAO HÀNG</th>
+                <th>THANH TOÁN</th>
+                <th>GIAO HÀNG</th>
                 <th>HÀNH ĐỘNG</th>
               </tr>
             </thead>
@@ -69,8 +69,8 @@ export default function OrderListScreen(props) {
                   <td>{order.isPaid ?'Đã thanh toán '+ order.paidAt.substring(0, 10) : 'Chưa thanh toán'}</td>
                   <td>
                     {order.isDelivered
-                      ?'Đã giao hàng '+ order.deliveredAt.substring(0, 10)
-                      : 'Chưa giao hàng'}
+                      ?'Đã xác nhận '+ order.deliveredAt.substring(0, 10)
+                      : 'Chưa xác nhận'}
                   </td>
                   <td>
                     <button

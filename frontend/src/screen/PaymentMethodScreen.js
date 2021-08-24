@@ -9,7 +9,7 @@ const PaymentMethodScreen = (props) => {
     if (!shippingAddress.address) {
         props.history.push('/shipping');
     }
-    const [paymentMethod, setPaymentMethod] = useState('PayPal');
+    const [paymentMethod, setPaymentMethod] = useState('Paypal');
     // const [thanhtoankhinhanhang, setthanhtoankhinhanhang] = useState('');
     const dispatch = useDispatch();
     const submitHandler = (e) => {
@@ -27,7 +27,7 @@ const PaymentMethodScreen = (props) => {
                             <h1>Phương thức thanh toán</h1>
                         </div>
                     </li>
-                    <li>
+                    {/* <li>
                         <div>
                             <div>
                                 <input
@@ -42,7 +42,7 @@ const PaymentMethodScreen = (props) => {
                                 <label htmlFor="paypal">PayPal</label>
                             </div>
                         </div>
-                    </li>
+                    </li> */}
                     <li>
                         <div>
                             <div>

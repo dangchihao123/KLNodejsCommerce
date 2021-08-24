@@ -1,6 +1,6 @@
 
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   createProduct,
@@ -20,11 +20,41 @@ function format1(n, currency) {
     return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
   })+ currency ;
 }
+function format(number) {
+
+  var decimalSeparator = ".";
+  var thousandSeparator = ",";
+
+  // make sure we have a string
+  var result = String(number);
+
+  // split the number in the integer and decimals, if any
+  var parts = result.split(decimalSeparator);
+
+  // if we don't have decimals, add .00
+  if (!parts[1]) {
+    parts[1] = "0";
+  }
+
+  // reverse the string (1719 becomes 9171)
+  result = parts[0].split("").reverse().join("");
+
+  // add thousand separator each 3 characters, except at the end of the string
+  result = result.replace(/(\d{3}(?!$))/g, "$1" + thousandSeparator);
+
+  // reverse back the integer and replace the original integer
+  parts[0] = result.split("").reverse().join("");
+
+  // recombine integer with decimals
+  return parts.join(decimalSeparator);
+}
+
 
 export default function ProductListScreen(props) {
   const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+  console.log(products);
 
   const productCreate = useSelector((state) => state.productCreate);
   const {
@@ -61,7 +91,7 @@ export default function ProductListScreen(props) {
     successDelete,
     userInfo._id,
   ]);
-
+ 
   const deleteHandler = (product) => {
     if (window.confirm('Bạn thật sự muốn xóa?')) {
       dispatch(deleteProduct(product._id));
@@ -75,8 +105,9 @@ export default function ProductListScreen(props) {
       <div className="row">
         <h1>Sản phẩm</h1>
         <button type="button" className="btn btn-primary" onClick={createHandler}>
-        <i class="fa fa-plus" aria-hidden="true"></i> Thêm sản phẩm
+        <i className="fa fa-plus" aria-hidden="true"></i> Thêm sản phẩm
         </button>
+    
       </div>
 
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -105,7 +136,7 @@ export default function ProductListScreen(props) {
               <tr key={product._id}>
                 {/* <td>{i++}</td> */}
                 <td>{product.name}</td>
-                <td>{format1(product.price,'')}</td>
+                <td>{format(product.price ) } VNĐ</td>
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
                 <td>
