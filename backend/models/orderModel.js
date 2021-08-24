@@ -1,5 +1,18 @@
 const mongoose = require('mongoose');
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
 const orderSchema = new mongoose.Schema(
     {
         orderItems: [
@@ -37,9 +50,9 @@ const orderSchema = new mongoose.Schema(
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
         // seller:{type:mongoose.Schema.Types.ObjectId, ref:'User'},
         isPaid: { type: Boolean, default: false },
-        paidAt: { type: Date },
+        paidAt: { type: String, set: date=> formatDate(date) },
         isDelivered: { type: Boolean, default: false },
-        deliveredAt: { type: Date },
+        deliveredAt: { type: String, set: date=> formatDate(date) },
     },
     {
         timestamps: true,

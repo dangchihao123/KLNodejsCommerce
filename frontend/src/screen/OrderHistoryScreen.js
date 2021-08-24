@@ -34,8 +34,8 @@ export default function OrderHistoryScreen(props) {
                             <th>SẢN PHẨM ĐÃ MUA</th>
                             <th>NGÀY ĐẶT HÀNG</th>
                             <th>TỔNG TIỀN (VNĐ)</th>
-                            <th>NGÀY THANH TOÁN</th>
-                            <th>NGÀY GIAO HÀNG</th>
+                            <th>THANH TOÁN</th>
+                            <th>GIAO HÀNG</th>
                             <th>HÀNH ĐỘNG</th>
                         </tr>
                     </thead>
@@ -51,12 +51,12 @@ export default function OrderHistoryScreen(props) {
                                 <td>
                                     {order.isDelivered
                                         ? "Đã xác nhận "+ order.deliveredAt.substring(0, 10)
-                                        : 'Chưa giao hàng'}
+                                        : 'Chưa xác nhận'}
                                 </td>
                                 <td>
                                     <button
                                         type="button"
-                                        className="small"
+                                        className="btn btn-primary"
                                         onClick={() => {
                                             props.history.push(`/order/${order._id}`);
                                         }}

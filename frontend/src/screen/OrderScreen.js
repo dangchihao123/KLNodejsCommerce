@@ -105,9 +105,9 @@ const OrderScreen = (props) => {
                                         </p>
                                         {order.isDelivered ? (
                                             <MessageBox variant='success'>
-                                                Đã xác nhận giao hàng  {order.deliveredAt}
+                                                Đã xác nhận đơn hàng  {order.deliveredAt}
                                             </MessageBox>)
-                                            : (<MessageBox variant='danger'>Chưa xác nhận giao hàng</MessageBox>)
+                                            : (<MessageBox variant='danger'>Chưa xác nhận đơn hàng</MessageBox>)
                                         }
                                     </div>
                                 </li>
@@ -181,13 +181,14 @@ const OrderScreen = (props) => {
                                             <div><strong>{format1(order.totalPrice, 'VNĐ')}</strong></div>
                                         </div>
                                     </li>
-                                    {!order.isPaid && order.paymentMethod === 'PayPal' &&  (
+                                    {!order.isPaid && !userInfo.isAdmin && order.paymentMethod === 'Paypal' && (
                                         <li>
                                             {!sdkReady ? (
                                                 <LoadingBox></LoadingBox>
                                             ) : (
                                                 <>
-                                                    {errorPay && (<MessageBox>{errorPay}</MessageBox>)}
+                                                    {errorPay && (<MessageBox>{errorPay}</MessageBox>
+                                                    )}
                                                     {loadingPay && <LoadingBox></LoadingBox>}
                                                     {/* <PayPalButton
                                                         amount={order.totalPrice}>
@@ -203,8 +204,7 @@ const OrderScreen = (props) => {
                                             )
                                             }
                                         </li>
-                                    )}
-                                    
+                                    )} :
                                     {userInfo.isAdmin && !order.isPaid && !order.isDelivered && (
                                         <li>
                                             {loadingDeliver && <LoadingBox></LoadingBox>}

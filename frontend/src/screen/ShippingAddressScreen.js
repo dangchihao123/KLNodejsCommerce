@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../component/CheckoutSteps';
 import { saveShippingAddress } from '../actions/cartActions';
+import MessageBox from '../component/MessageBox';
 
 
 const ShippingAddressScreen = (props) => {
     const userSignin = useSelector((state) => state.userSignin);
-    const { userInfo} = userSignin;
-    // const cart = useSelector((state) => state.cart)
-    // const { shippingAddress } = cart;
-    // if (!userInfo) {
-    //     props.history.push('/signin');
-    // }
+    const { userInfo, loading, error} = userSignin;
+    const cart = useSelector((state) => state.cart)
+    const { shippingAddress} = cart;
+    if (!userInfo) {
+        props.history.push('/signin');
+    }
     const [fullName, setFullName] = useState('');
     const [address, setAddress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -30,6 +31,7 @@ const ShippingAddressScreen = (props) => {
         <div>
            
                 <CheckoutSteps step1 step2></CheckoutSteps>
+            {<MessageBox>{loading}</MessageBox>}
             <form className="form" onSubmit={submitHandler}>
                 <ul className="form-container">
                     <li>

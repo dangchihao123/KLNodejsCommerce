@@ -27,7 +27,7 @@ router.put(
             user.isSeller = req.body.isSeller || user.isSeller;
             user.isAdmin = req.body.isAdmin || user.isAdmin;
             const updatedUser = await user.save();
-            res.send({ message: 'User Updated', user: updatedUser });
+            res.send({ message: 'Cập nhật user thành công', user: updatedUser });
         } else {
             res.status(404).send({ message: 'User Not Found' });
         }

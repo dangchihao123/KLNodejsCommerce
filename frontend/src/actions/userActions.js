@@ -102,8 +102,8 @@ const register = (name, email, password) => async (dispatch) => {
         dispatch({
             type: USER_REGISTER_FAIL,
             payload: error.respones && error.response.data.message
-                ? "Mời bạn nhập thông tin cần đăng ký !"
-                : "Mời bạn điền thông tin cần đăng ký !"
+                ? "Mời bạn điền thông tin cần đăng ký !"
+                : "Email đã có người sử dụng, vui lòng nhập email khác"
         })
     }
 }
