@@ -56,7 +56,7 @@ function ProductCreen(props) {
                 createReview(productId, { rating, comment, name: userInfo.name })
             );
         } else {
-            alert('Nhập nhận xét và đánh giá');
+            alert('Vui lòng nhập nhận xét và đánh giá');
         }
     };
     return (
@@ -142,6 +142,7 @@ function ProductCreen(props) {
                                                     onChange={(e) => setRating(e.target.value)}
                                                 >
                                                   
+                                                    <option value="">--Đánh giá--</option>
                                                     <option value="1">1 sao - tệ</option>
                                                     <option value="2">2 sao - trung bình</option>
                                                     <option value="3">3 sao - tốt</option>
