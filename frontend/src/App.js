@@ -114,9 +114,9 @@ function App() {
                     Admin <i className="fa fa-caret-down" />
                   </Link>
                   <ul className="dropdown-content">
-                    {/* <li>
+                    <li>
                       <Link to="/dashboard">Dashboard</Link>
-                    </li> */}
+                    </li>
                     <li>
                       <Link to="/productlist">Quản lý sản phẩm</Link>
                     </li>
@@ -204,14 +204,18 @@ function App() {
               path="/productlist"
               component={ProductListScreen}
             ></AdminRoute>
-            <AdminRoute
+            {/* <AdminRoute
               path="/dashboard"
               component={DashboardScreen}
-            ></AdminRoute>
+            ></AdminRoute> */}
             <AdminRoute
               path="/user/:id/edit"
               component={UserEditScreen}
             ></AdminRoute>
+            <AdminRoute
+            path="/dashboard"
+            component={DashboardScreen}
+          ></AdminRoute>
             <Route path="/product/:id/edit" component={ProductEditScreen} exact />
             <Route path="/product" component={ProductCreateScreen} exact />
             <Route path="/" exact={true} component={HomeScreen} />

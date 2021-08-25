@@ -94,6 +94,7 @@ export default function UserEditScreen(props) {
                             <li>
                                 <label htmlFor="isAdmin">Là admin</label>
                                 <input
+                                    disabled
                                     id="isAdmin"
                                     type="checkbox"
                                     checked={isAdmin}

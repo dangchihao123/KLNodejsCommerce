@@ -62,7 +62,14 @@ function RegisterScreen(props) {
                     <label htmlfor="password">
                         Mật khẩu
                     </label>
-                    <input type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)} />
+                    <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    pattern="[A-Za-z0-9]{6,}"
+                    />
                 </li>
                 <li>
                     <label htmlfor="rePassword">

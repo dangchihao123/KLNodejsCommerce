@@ -13,12 +13,15 @@ function CartReducer(state = { cartItems: [] }, action) {
             const product = state.cartItems.find(x => x.product === item.product);
             if (product) {
                 return {
+                    ...state,
                     cartItems:
                         state.cartItems.map(x => x.product === product.product ? item : x)
                     // ...state, cartItem: state.cartItems.map(x => x.product === product.product ? item : x) };
                 }
+            }else{
+                 return { ...state, cartItems: [...state.cartItems, item] };
             }
-            return { cartItems: [...state.cartItems, item] };
+           
         case CART_REMOVE_ITEM:
             return { cartItems: state.cartItems.filter(x => x.product !== action.payload) }
         case CART_SAVE_SHIPPING_ADDRESS:
