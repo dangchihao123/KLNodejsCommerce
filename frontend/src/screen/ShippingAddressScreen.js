@@ -13,12 +13,12 @@ const ShippingAddressScreen = (props) => {
     if (!userInfo) {
         props.history.push('/signin');
     }
-    const [fullName, setFullName] = useState('');
-    const [address, setAddress] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [city, setCity] = useState('');
-    const [postalCode, setPostalCode] = useState('');
-    const [country, setCountry] = useState('');
+    const [fullName, setFullName] = useState(shippingAddress.fullName);
+    const [address, setAddress] = useState(shippingAddress.address);
+    const [phoneNumber, setPhoneNumber] = useState(shippingAddress.phoneNumber);
+    const [city, setCity] = useState(shippingAddress.city);
+    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+    const [country, setCountry] = useState(shippingAddress.country);
     // const [tinh, setTinh] = useState(shippingAddress.tinh);
     const dispatch = useDispatch();
 

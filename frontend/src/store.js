@@ -5,20 +5,29 @@ import { CartReducer } from './reducers/CartReducers';
 import { userSigninReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userDeleteReducer, userUpdateReducer, userListReducer } from './reducers/userReducers';
 import { orderCreateReducer, orderDeleteReducer, orderDeliverReducer, orderDetailsReducer, orderListReducer, orderMineListReducer, orderPayReducer, orderSummaryReducer } from './reducers/orderReducers';
 
-const cartItems = localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem('cartItems'))
-    : [];
+// const cartItems = localStorage.getItem("cartItems")
+//     ? JSON.parse(localStorage.getItem('cartItems'))
+//     : [];
 // const shippingAddress = localStorage.getItem('shippingAddress')
 //     ? JSON.parse(localStorage.getItem('shippingAddress'))
 //     : {};
 // const userInfo = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem('userInfo')) : null;
 // const paymentMethod = 'PayPal';
 const initialState = { 
+    // cart: {
+    //     shippingAddress : localStorage.getItem('shippingAddress') 
+    //     ? JSON.parse(localStorage.getItem('shippingAddress'))
+    //     : {},
+    //     cartItems, paymentMethod: 'PayPal' }, 
     cart: {
-        shippingAddress : localStorage.getItem('shippingAddress') 
-        ? JSON.parse(localStorage.getItem('shippingAddress'))
-        : {},
-        cartItems, paymentMethod: 'PayPal' }, 
+        cartItems: localStorage.getItem('cartItems')
+          ? JSON.parse(localStorage.getItem('cartItems'))
+          : [],
+        shippingAddress: localStorage.getItem('shippingAddress')
+          ? JSON.parse(localStorage.getItem('shippingAddress'))
+          : {},
+        paymentMethod: 'PayPal',
+      },
     userSignin: { 
         userInfo: localStorage.getItem('userInfo') 
         ? JSON.parse(localStorage.getItem('userInfo')) 

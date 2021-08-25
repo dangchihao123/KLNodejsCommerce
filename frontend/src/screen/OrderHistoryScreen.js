@@ -34,7 +34,7 @@ export default function OrderHistoryScreen(props) {
                             <th>SẢN PHẨM ĐÃ MUA</th>
                             <th>NGÀY ĐẶT HÀNG</th>
                             <th>TỔNG TIỀN (VNĐ)</th>
-                            <th>THANH TOÁN</th>
+                            {/* <th>THANH TOÁN</th> */}
                             <th>GIAO HÀNG</th>
                             <th>HÀNH ĐỘNG</th>
                         </tr>
@@ -47,7 +47,7 @@ export default function OrderHistoryScreen(props) {
                                 <td>{order.orderItems.map(item =><ul><li>- {item.name}</li></ul>)}</td>
                                 <td>{order.createdAt.substring(0, 10)}</td>
                                 <td>{format1(order.totalPrice, '')}</td>
-                                <td>{order.isPaid ? "Đã thanh toán "+ order.paidAt.substring(0, 10) : 'Chưa thanh toán'}</td>
+                                {/* <td>{order.isPaid ? "Đã thanh toán "+ order.paidAt.substring(0, 10) : 'Chưa thanh toán'}</td> */}
                                 <td>
                                     {order.isDelivered
                                         ? "Đã xác nhận "+ order.deliveredAt.substring(0, 10)
