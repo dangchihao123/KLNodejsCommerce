@@ -68,7 +68,7 @@ router.get('/createadmin', async (req, res) => {
         const user = new User({
             name: 'hao',
             email: 'hao@gmail.com',
-            password: "1",
+            password: "123456",
             isAdmin: true
         });
         const newUser = await user.save();
@@ -133,11 +133,12 @@ router.put(
     expressAsyncHandler(async (req, res) => {
       const user = await User.findById(req.user._id);
       if (user) {
-        user.name = req.body.name || user.name;
-        user.email = req.body.email || user.email;
-        if (req.body.password) {
-          user.password = bcrypt.hashSync(req.body.password, 8);
-        }
+        user.name = req.body.name;
+        user.email = req.body.email;
+        // if (req.body.password) {
+        //   user.password = bcrypt.hashSync(req.body.password, 8);
+        // }
+        console.log(user);
         const updatedUser = await user.save();
         res.send({
           _id: updatedUser._id,

@@ -70,7 +70,7 @@ const ProfileScreen = () => {
                                         <input
                                             id="name"
                                             type="text"
-                                            placeholder="Enter name"
+                                            placeholder="Nhập họ tên"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             required
@@ -82,18 +82,18 @@ const ProfileScreen = () => {
                                         <input
                                             id="email"
                                             type="email"
-                                            placeholder="Enter email"
+                                            placeholder="Nhập email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
                                         />
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <label htmlFor="password">Mật khẩu</label>
                                         <input
                                             id="password"
                                             type="password"
-                                            placeholder="mật khẩu"
+                                            placeholder="Nhập mật khẩu"
                                             onChange={(e) => setPassword(e.target.value)}
                                             // disabled
                                             required
@@ -109,7 +109,7 @@ const ProfileScreen = () => {
                                             // disabled
                                             required
                                         />
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <label />
                                         <button className=" button primary" type="submit">Cập nhật</button>

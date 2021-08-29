@@ -114,9 +114,9 @@ function App() {
                     Admin <i className="fa fa-caret-down" />
                   </Link>
                   <ul className="dropdown-content">
-                    <li>
+                    {/* <li>
                       <Link to="/dashboard">Dashboard</Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link to="/productlist">Quản lý sản phẩm</Link>
                     </li>

@@ -87,7 +87,7 @@ function CartScreen(props) {
             </h3>
             <button onClick={checkoutHandler} className="button primary" disabled={cartItems.length === 0}>
                 Tiến hành đặt hàng
-               </button>
+            </button>
         </div>
     </div>
 }

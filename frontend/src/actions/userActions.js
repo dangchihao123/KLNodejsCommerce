@@ -126,7 +126,7 @@ const detailsUser = (userId) => async (dispatch, getState) => {
         dispatch({ type: USER_DETAILS_FAIL, payload: message });
     }
 }
-export const updateUserProfile = (user) => async (dispatch, getState) => {
+const updateUserProfile = (user) => async (dispatch, getState) => {
     dispatch({ type: USER_UPDATE_PROFILE_REQUEST, payload: user });
     const {
       userSignin: { userInfo },
@@ -146,4 +146,4 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: message });
     }
   };
-export { signin, register, signout, detailsUser, listUsers, deleteUser, updateUser }
+export { signin, register, signout, detailsUser, listUsers, deleteUser, updateUser, updateUserProfile }
