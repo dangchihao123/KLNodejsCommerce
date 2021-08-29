@@ -208,6 +208,7 @@ a.brand{
  align-items: center;
  margin-left: 10px;
  margin-top: 10px;
+
 }
 .row.top {
   align-items: flex-start;
@@ -217,6 +218,7 @@ a.brand{
 
 img {
   border-radius: 0.5rem;
+  max-width: 70%;
 }
 .logo{
   width: 5px;
@@ -386,7 +388,7 @@ button.sidebar-close-button:hover {
   flex: 2 1 60rem;
 }
 .details-image{
-  max-width: 40rem;
+  /* max-width: 40rem; */
   widows: 100%;
 }
 .details-info{
